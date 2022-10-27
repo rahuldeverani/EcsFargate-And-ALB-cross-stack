@@ -47,6 +47,8 @@ containerDef.addPortMappings({
 
 const service = new ecs.FargateService(this, 'Service', { cluster, taskDefinition: taskDef });
 
+    
+ // this is being used due to this https://github.com/aws/aws-cdk/issues/19842   
 const cfnservice= service.node.defaultChild as ecs.CfnService
 
 cfnservice.healthCheckGracePeriodSeconds = undefined;
